@@ -26,7 +26,7 @@ contract CTFExchange is
     Fees,
     Pausable,
     AssetOperations,
-    Hashing("Polymarket CTF Exchange", "1"),
+    Hashing("Limitless CTF Exchange", "1"),
     NonceManager,
     Registry,
     Signatures,
