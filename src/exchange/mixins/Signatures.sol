@@ -28,7 +28,7 @@ abstract contract Signatures is ISignatures, PolyFactoryHelper {
     /// @param signer           - Address of the signer
     /// @param associated       - Address associated with the signer.
     ///                           For signature type EOA, this MUST be the same as the signer address.
-    ///                           For signature types POLY_PROXY and POLY_GNOSIS_SAFE, this is the address of the proxy or the safe
+    ///                           For signature types POLY_PROXY and LIMITLESS_SAFE, this is the address of the proxy or the safe
     /// @param structHash       - The hash of the struct being verified
     /// @param signature        - The signature to be verified
     /// @param signatureType    - The signature type to be verified
@@ -41,8 +41,8 @@ abstract contract Signatures is ISignatures, PolyFactoryHelper {
     ) internal view returns (bool) {
         if (signatureType == SignatureType.EOA) {
             return verifyEOASignature(signer, associated, structHash, signature);
-        } else if (signatureType == SignatureType.POLY_GNOSIS_SAFE) {
-            return verifyPolySafeSignature(signer, associated, structHash, signature);
+        } else if (signatureType == SignatureType.LIMITLESS_SAFE) {
+            return verifySafeSignature(signer, associated, structHash, signature);
         } else {
             // POLY_PROXY
             return verifyPolyProxySignature(signer, associated, structHash, signature);
@@ -102,7 +102,7 @@ abstract contract Signatures is ISignatures, PolyFactoryHelper {
     /// @param safeAddress - Address of the safe
     /// @param hash        - Hash of the struct being verified
     /// @param signature   - Signature to be verified
-    function verifyPolySafeSignature(address signer, address safeAddress, bytes32 hash, bytes memory signature)
+    function verifySafeSignature(address signer, address safeAddress, bytes32 hash, bytes memory signature)
         internal
         view
         returns (bool)

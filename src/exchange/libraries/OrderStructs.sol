@@ -30,7 +30,7 @@ struct Order {
     uint256 feeRateBps;
     /// @notice The side of the order: BUY or SELL
     Side side;
-    /// @notice Signature type used by the Order: EOA, POLY_PROXY or POLY_GNOSIS_SAFE
+    /// @notice Signature type used by the Order: EOA, POLY_PROXY or LIMITLESS_SAFE
     SignatureType signatureType;
     /// @notice The order signature
     bytes signature;
@@ -42,8 +42,8 @@ enum SignatureType
     EOA,
     // 1: EIP712 signatures signed by EOAs that own Polymarket Proxy wallets
     POLY_PROXY,
-    // 2: EIP712 signatures signed by EOAs that own Polymarket Gnosis safes
-    POLY_GNOSIS_SAFE
+    // 2: EIP712 signatures signed by EOAs that own Limitless Safe wallets
+    LIMITLESS_SAFE
 }
 
 enum Side
